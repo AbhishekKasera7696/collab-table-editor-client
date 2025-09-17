@@ -1,4 +1,4 @@
-.App {
+/* .App {
   text-align: center;
 }
 
@@ -35,4 +35,942 @@
   to {
     transform: rotate(360deg);
   }
+} */
+
+
+
+
+
+
+
+
+
+/* App.css */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f5f5f5;
+}
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f0f2f5;
+}
+
+.login-form {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  text-align: center;
+}
+
+.login-form h2 {
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+.login-form input {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.login-form button {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.login-form button:hover {
+  background-color: #45a049;
+}
+
+.table-editor {
+  display: flex;
+  height: 100vh;
+  position: relative;
+}
+
+/* .toolbar {
+  width: 250px;
+  background: #2c3e50;
+  color: white;
+  padding: 1rem;
+  overflow-y: auto;
+}
+
+.toolbar-section {
+  margin-bottom: 1.5rem;
+}
+
+.toolbar-section h3 {
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+} */
+
+/* Toolbar styles */
+.toolbar {
+  width: 250px;
+  background: #2c3e50;
+  color: white;
+  padding: 1rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.toolbar-section {
+  margin-bottom: 0;
+}
+
+.toolbar-section h3 {
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  color: #ecf0f1;
+}
+
+.button-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  position: relative;
+}
+
+.primary-btn, .secondary-btn, .danger-btn {
+  padding: 0.5rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  text-align: left;
+}
+
+.primary-btn {
+  background-color: #3498db;
+  color: white;
+}
+
+.secondary-btn {
+  background-color: #95a5a6;
+  color: white;
+}
+
+/* Delete and Logout buttons */
+.danger-btn {
+  background-color: #e74c3c;
+  color: white;
+}
+
+.danger-btn:hover {
+  background-color: #c0392b;
+}
+
+.logout-btn {
+  background-color: #95a5a6;
+  color: white;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  text-align: left;
+}
+
+.logout-btn:hover {
+  background-color: #7f8c8d;
+}
+
+/* Modal styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  max-width: 400px;
+  width: 100%;
+}
+
+.modal-content h3 {
+  margin-bottom: 1rem;
+  color: #2c3e50;
+}
+
+.modal-content p {
+  margin-bottom: 1.5rem;
+  color: #7f8c8d;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: flex-end;
+}
+
+.modal-actions button {
+  padding: 0.5rem 1rem;
+}
+
+.dropdown-menu {
+  background: white;
+  color: #333;
+  border-radius: 4px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  margin-top: 0.25rem;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 100;
+}
+
+.dropdown-menu div {
+  padding: 0.5rem;
+  cursor: pointer;
+  border-bottom: 1px solid #eee;
+}
+
+.dropdown-menu div:last-child {
+  border-bottom: none;
+}
+
+.dropdown-menu div:hover {
+  background-color: #f0f0f0;
+}
+
+.online-users {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.user-badge {
+  background: #3498db;
+  padding: 0.35rem 0.5rem;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  text-align: center;
+}
+
+/* Freeze options styles */
+.freeze-options-container {
+  position: relative;
+}
+
+.freeze-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: white;
+  color: #333;
+  border-radius: 4px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  margin-top: 0.25rem;
+  z-index: 100;
+}
+
+.freeze-option {
+  padding: 0.5rem;
+  cursor: pointer;
+  border-bottom: 1px solid #eee;
+}
+
+.freeze-option:last-child {
+  border-bottom: none;
+}
+
+.freeze-option:hover {
+  background-color: #f0f0f0;
+}
+
+/* Selection indicators */
+.selection-count {
+  background: #3498db;
+  color: white;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  margin-left: 0.5rem;
+}
+
+.button-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.primary-btn, .secondary-btn, .danger-btn {
+  padding: 0.5rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.primary-btn {
+  background-color: #3498db;
+  color: white;
+}
+
+.secondary-btn {
+  background-color: #95a5a6;
+  color: white;
+}
+
+.danger-btn {
+  background-color: #e74c3c;
+  color: white;
+}
+
+.dropdown-menu {
+  background: white;
+  color: #333;
+  border-radius: 4px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  margin-top: 0.25rem;
+}
+
+.dropdown-menu div {
+  padding: 0.5rem;
+  cursor: pointer;
+}
+
+.dropdown-menu div:hover {
+  background-color: #f0f0f0;
+}
+
+.online-users {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.user-badge {
+  background: #3498db;
+  padding: 0.25rem 0.5rem;
+  border-radius: 12px;
+  font-size: 0.8rem;
+}
+
+.workspace {
+  flex: 1;
+  position: relative;
+  overflow: auto;
+  background: #ecf0f1;
+}
+
+.workspace.merge-mode {
+  cursor: cell;
+}
+
+.workspace.merge-mode::before {
+  content: "Merge Mode: Select cells to merge";
+  position: fixed;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #3498db;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 4px;
+  z-index: 1000;
+  font-weight: bold;
+};
+
+.table-container {
+  position: absolute;
+  background: white;
+  border: 1px solid #bdc3c7;
+  border-radius: 4px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  margin: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Align header with table */
+}
+
+
+.table-header {
+  background: #34495e;
+  color: white;
+  padding: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  /* Width will be set dynamically */
+}
+
+.delete-btn {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+
+.editable-table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.editable-table td {
+  border: 1px solid #bdc3c7;
+  padding: 0;
+  position: relative;
+  min-width: 100px;
+  min-height: 50px;
+}
+
+.cell {
+  position: relative;
+  padding: 0.5rem;
+  min-height: 50px;
+  min-width: 100px;
+  border: 1px solid #dee2e6;
+}
+
+.cell.hovered {
+  background-color: #f8f9fa;
+}
+
+.cell.has-nested {
+  padding: 0;
+  overflow: auto;
+}
+
+.cell textarea {
+  width: 100%;
+  height: 100%;
+  border: none;
+  resize: none;
+  outline: none;
+  font-family: inherit;
+  font-size: inherit;
+}
+
+.cell-image {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cell-image img {
+  max-width: 100%;
+  max-height: 100px;
+}
+.cell-text {
+  min-height: 20px;
+}
+
+/* Cell actions */
+.cell-actions {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  gap: 0.25rem;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 0.25rem;
+  z-index: 5;
+};
+
+.add-nested-btn, .image-upload-btn, .clear-btn {
+  background: #3498db;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.remove-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.cell-actions {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  gap: 0.25rem;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 0.25rem;
+}
+
+.add-nested-btn, .image-upload-btn {
+  background: #3498db;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.context-menu {
+  position: fixed;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.context-menu-item {
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+
+.context-menu-item:hover {
+  background-color: #f0f0f0;
+}
+
+.user-cursor {
+  position: absolute;
+  pointer-events: none;
+  z-index: 1000;
+}
+
+.cursor {
+  width: 2px;
+  height: 20px;
+  background-color: red;
+  position: relative;
+}
+
+.username {
+  position: absolute;
+  top: 20px;
+  left: 0;
+  background: rgba(255, 0, 0, 0.7);
+  color: white;
+  padding: 2px 4px;
+  border-radius: 2px;
+  font-size: 0.7rem;
+  white-space: nowrap;
+}
+
+
+
+/* Nested table styles */
+.nested-table-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 70px;
+  display: flex;
+  flex-direction: column;
+}
+
+.nested-table {
+  width: 100%;
+  height: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  flex-grow: 1;
+  margin: 0;
+}
+
+.nested-table td {
+  border: 1px solid #adb5bd;
+  padding: 0.4rem;
+  text-align: center;
+  vertical-align: middle;
+  height: 30px;
+  min-width: 40px;
+}
+
+.nested-cell {
+  min-height: 25px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.nested-cell:hover {
+  background-color: #e9ecef;
+}
+
+.remove-nested-btn {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: #e74c3c;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Nested table options */
+.nested-table-options {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 0.5rem;
+  z-index: 10;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.option-header {
+  font-size: 0.8rem;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  color: #495057;
+}
+
+.size-options {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.35rem;
+}
+
+.size-options button {
+  padding: 0.4rem;
+  border: 1px solid #ced4da;
+  background: #f8f9fa;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  transition: all 0.2s;
+}
+
+.size-options button:hover {
+  background: #e9ecef;
+  border-color: #adb5bd;
+}
+
+/* Make sure the parent table cells are large enough to contain nested tables */
+.editable-table td {
+  min-width: 120px;
+  min-height: 80px;
+  position: relative;
+}
+
+/* Adjust nested table sizing based on the number of rows/columns */
+.nested-table[data-rows="1"] tr {
+  height: 100%;
+}
+
+.nested-table[data-rows="2"] tr {
+  height: 50%;
+}
+
+.nested-table[data-rows="3"] tr {
+  height: 33.33%;
+}
+
+.nested-table[data-rows="4"] tr {
+  height: 25%;
+}
+
+
+/* Remove borders from merged cells */
+.merged {
+  border: none !important;
+}
+
+/* Style for the merged cell container */
+.merged-cell {
+  background-color: #eaf2f8;
+  border: 2px solid #3498db;
+  border-radius: 4px;
+  padding: 0.5rem;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Ensure the first cell of a merged range looks proper */
+td.merged:first-child {
+  border: 1px solid #dee2e6 !important;
+}
+
+/* Hover effects for add table buttons */
+.add-table-hint {
+  position: absolute;
+  z-index: 100;
+  background: rgba(52, 152, 219, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.add-table-hint:hover {
+  background: rgba(41, 128, 185, 0.9);
+}
+
+.add-table-top {
+  top: -25px;
+  left: 0;
+  right: 0;
+  height: 25px;
+}
+
+.add-table-bottom {
+  bottom: -25px;
+  left: 0;
+  right: 0;
+  height: 25px;
+}
+
+.add-table-left {
+  top: 0;
+  left: -25px;
+  bottom: 0;
+  width: 25px;
+}
+
+.add-table-right {
+  top: 0;
+  right: -25px;
+  bottom: 0;
+  width: 25px;
+}
+
+.add-table-btn {
+  background: #3498db;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  transition: all 0.2s ease;
+}
+
+.add-table-btn:hover {
+  background: #2980b9;
+  transform: scale(1.1);
+}
+
+
+/* Add these styles to your existing CSS */
+
+.table-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.table-edge {
+  position: absolute;
+  z-index: 5;
+  transition: all 0.2s ease;
+  opacity: 0;
+}
+
+.table-edge.hovered {
+  opacity: 1;
+}
+
+.top-edge {
+  top: -5px;
+  left: 0;
+  right: 0;
+  height: 10px;
+  background-color: rgba(52, 152, 219, 0.3);
+  cursor: row-resize;
+}
+
+.bottom-edge {
+  bottom: -5px;
+  left: 0;
+  right: 0;
+  height: 10px;
+  background-color: rgba(52, 152, 219, 0.3);
+  cursor: row-resize;
+}
+
+.left-edge {
+  top: 0;
+  left: -5px;
+  bottom: 0;
+  width: 10px;
+  background-color: rgba(52, 152, 219, 0.3);
+  cursor: col-resize;
+}
+
+.right-edge {
+  top: 0;
+  right: -5px;
+  bottom: 0;
+  width: 10px;
+  background-color: rgba(52, 152, 219, 0.3);
+  cursor: col-resize;
+}
+
+.frozen-row {
+  position: sticky;
+  top: 0;
+  background-color: #f8f9fa;
+  z-index: 10;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.frozen-column {
+  position: sticky;
+  left: 0;
+  background-color: #f8f9fa;
+  z-index: 5;
+  box-shadow: 2px 0 4px rgba(0, 0, 0, 0.1);
+};
+
+/* Selected cells */
+.selected {
+  background-color: rgba(52, 152, 219, 0.3) !important;
+  outline: 2px solid #3498db;
+}
+
+/* Merged cells */
+/* Add these styles to your CSS */
+.merged {
+  display: none !important;
+}
+
+.selected {
+  background-color: rgba(52, 152, 219, 0.3) !important;
+  outline: 2px solid #3498db;
+}
+
+.merge-mode .table-container {
+  border: 2px dashed #3498db;
+}
+
+.merge-mode .cell {
+  cursor: pointer;
+}
+
+/* Remove borders from merged cells */
+td.merged-cell {
+  border: none !important;
+}
+
+/* Style for the main merged cell */
+td[rowspan][colspan] {
+  background-color: #eaf2f8;
+}
+
+/* Freeze dropdown styles */
+.freeze-option-header {
+  padding: 0.5rem;
+  font-weight: bold;
+  border-bottom: 1px solid #eee;
+  background-color: #f8f9fa;
+}
+
+.freeze-option.frozen {
+  background-color: #e3f2fd;
+  font-weight: bold;
+}
+
+/* Active button state */
+.active {
+  background-color: #27ae60 !important;
+}
+
+/* Table container for frozen headers */
+.table-container {
+  overflow: hidden;
+  max-height: 400px;
+  max-width: 600px;
+}
+
+.editable-table {
+  border-collapse: collapse;
+}
+
+/* Add these styles to your CSS */
+.selected {
+  background-color: rgba(52, 152, 219, 0.3) !important;
+  outline: 2px solid #3498db;
+}
+
+.merge-mode .cell {
+  cursor: cell;
+}
+
+.merge-mode .table-container {
+  border: 2px dashed #3498db;
 }
