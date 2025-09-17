@@ -14,11 +14,11 @@
     "socket.io-client": "^4.8.1",
     "web-vitals": "^2.1.4"
   },
+  "homepage": "https://collab-table-editor-client.vercel.app",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "build": "GENERATE_SOURCEMAP=false react-scripts build",
+    "postbuild": "npm run optimize-build",
+    "optimize-build": "npx workbox injectManifest workbox-config.js"
   },
   "eslintConfig": {
     "extends": [
