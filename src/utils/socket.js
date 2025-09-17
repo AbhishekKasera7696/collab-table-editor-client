@@ -3,10 +3,14 @@ import io from 'socket.io-client';
 let socket = null;
 
 export const initializeSocket = () => {
-  socket = io('http://localhost:3001');
+  const backendUrl =
+    window.location.hostname === 'localhost'
+      ? 'http://localhost:3001'
+      : 'https://collab-table-editor-production.up.railway.app';
+
+  socket = io(backendUrl);
   return socket;
 };
-
 export const getSocket = () => {
   return socket;
 };
