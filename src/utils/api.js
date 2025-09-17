@@ -26,3 +26,4 @@ export const updateDocument = async (document) => {
   });
   return response.json();
 };
+
