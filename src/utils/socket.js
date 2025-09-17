@@ -3,41 +3,13 @@ import io from 'socket.io-client';
 let socket = null;
 
 export const initializeSocket = () => {
-  const backendUrl = (() => {
-    // For production
-    if (window.location.hostname.includes('vercel.app')) {
-      return 'https://collab-table-editor-production.up.railway.app';
-    }
-    
-    // For local development
-    if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
-      return 'http://localhost:3001';
-    }
-    
-    // Fallback to production
-    return 'https://collab-table-editor-production.up.railway.app';
-  })();
-
-  socket = io(backendUrl, {
-    transports: ['websocket', 'polling'],
-    withCredentials: true,
-    extraHeaders: {
-      "Access-Control-Allow-Origin": backendUrl
-    }
-  });
-  
-  // Add connection error handling
-  socket.on('connect_error', (error) => {
-    console.error('Socket connection error:', error);
-  });
-  
-  socket.on('connect', () => {
-    console.log('Socket connected successfully');
-  });
-  
+  socket = io('http://localhost:3001');
   return socket;
 };
 
+export const getSocket = () => {
+  return socket;
+};
 
 export const joinRoom = (username) => {
   if (socket) {
